@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity(foreignKeys = arrayOf(
     ForeignKey(entity = Booking::class, parentColumns = arrayOf("bookingId"),
-    childColumns = arrayOf("idBooking"), onDelete = ForeignKey.CASCADE)
+    childColumns = arrayOf("bookingId"), onDelete = ForeignKey.CASCADE)
 ))
 data class Treatment (
     @PrimaryKey
@@ -16,5 +16,5 @@ data class Treatment (
     val treatmentDescription:String,
     val treatmentBeginDate:Date,
     val treatmentEndDate:Date,
-    val idBooking:Long
+    val bookingId:Long
 )
