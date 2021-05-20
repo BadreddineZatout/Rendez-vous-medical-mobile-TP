@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Doctor (
     @PrimaryKey
-    val doctorId:String,
+    val doctorId:Long,
     val firstName:String,
     val lastName: String,
     val speciality:String

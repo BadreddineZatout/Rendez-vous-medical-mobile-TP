@@ -12,5 +12,5 @@ data class Booking (
     val bookingId:Long,
     val bookingDate:Date,
     val bookingTime: String,
-    val idDoctor:String
+    val idDoctor:Long
 )
