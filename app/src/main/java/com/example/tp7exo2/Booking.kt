@@ -10,7 +10,7 @@ import java.util.*
 data class Booking (
     @PrimaryKey
     val bookingId:Long,
-    val bookingDate:Date,
+    val bookingDate:Date?,
     val bookingTime: String,
     val doctorId:Long
 )

@@ -14,7 +14,7 @@ data class Treatment (
     val treatmentId:Long,
     val disease:String,
     val treatmentDescription:String,
-    val treatmentBeginDate:Date,
-    val treatmentEndDate:Date,
+    val treatmentBeginDate:Date?,
+    val treatmentEndDate:Date?,
     val bookingId:Long
 )
