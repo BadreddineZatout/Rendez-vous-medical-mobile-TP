@@ -2,6 +2,7 @@ package com.example.tp7exo2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -37,14 +38,22 @@ class MainActivity : AppCompatActivity() {
         val t3 = Treatment(3,"disease3", "description 3", beginDate, endDate, 1)
         RoomService.appDatabase.getTreatmentDao().addTreatment(t3)*/
         val d = Date(2021,4,21)
-        val list:List<Treatment>? = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor("Zatout", d)
         //val t = Date(2021,4,15).time.toLong() > d.toLong()
-        affiche.text = "No description"
-        if (list != null) {
-            if (list.count() > 0){
-                affiche.text = list?.get(0)?.treatmentDescription
+        enCours.setOnClickListener ({
+            val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatments(d)
+            var desc:String = ""
+            for (t in list){
+                desc += t.treatmentDescription + "\n"
             }
-        }
-        //affiche2.text = Date(2021,4,15).time.toLong().toString()
+            Toast.makeText(this,desc,Toast.LENGTH_SHORT).show()
+        })
+        enCoursbyDoc.setOnClickListener({
+            val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(DocName.text.toString(), d)
+            var desc = "Aucun traitement par ce medecin"
+            if (list.count() != 0){
+                desc = list.get(0).treatmentDescription
+            }
+            Toast.makeText(this,desc,Toast.LENGTH_SHORT).show()
+        })
     }
 }
