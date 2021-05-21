@@ -20,10 +20,8 @@ interface TreatmentDao {
 
     @Query("select * from Treatment where treatmentBeginDate<=:d and treatmentEndDate>=:d")
     fun getCurrentTreatments(d:Date):List<Treatment>
-    /*@Query("select count(*) from Treatment where treatmentBeginDate<=:d and treatmentEndDate>=:d")
-    fun getCurrentTreatments(d:Date):Int*/
 
-    @Query("select * from treatment natural join booking natural join doctor where lastName like :docName")
-    fun getCurrentTreatmentByDoctor(docName:String):List<Treatment>
+    @Query("select * from treatment natural join booking natural join doctor where lastName like :docName and treatmentBeginDate<=:d and treatmentEndDate>=:d")
+    fun getCurrentTreatmentByDoctor(docName:String, d:Date):List<Treatment>
 
 }

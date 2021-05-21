@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         RoomService.appDatabase.getBookingDao().addbooking(book3)
         RoomService.appDatabase.getBookingDao().addbooking(book4)
         var beginDate = Date(2021,4,14)
-        var endDate = Date(2021,4,14)
+        var endDate = Date(2021,7,14)
         val t1 = Treatment(1,"disease1", "description 1", beginDate, endDate, 1)
         beginDate = Date(2021,4,15)
         endDate = Date(2021,5,15)
@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         val t3 = Treatment(3,"disease3", "description 3", beginDate, endDate, 1)
         RoomService.appDatabase.getTreatmentDao().addTreatment(t3)
         val d = Date(2021,4,21)
-        val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatments(d)
+        val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor("Zatout", d)
         //val t = Date(2021,4,15).time.toLong() > d.toLong()
-        affiche.text = list.get(0).treatmentDescription
+        affiche.text = list.toString()
         //affiche2.text = Date(2021,4,15).time.toLong().toString()
     }
 }
