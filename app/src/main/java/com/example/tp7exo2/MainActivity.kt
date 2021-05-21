@@ -37,8 +37,9 @@ class MainActivity : AppCompatActivity() {
         endDate = Date(2021,11,21)
         val t3 = Treatment(3,"disease3", "description 3", beginDate, endDate, 1)
         RoomService.appDatabase.getTreatmentDao().addTreatment(t3)*/
-        val d = Date(2021,4,21)
-        //val t = Date(2021,4,15).time.toLong() > d.toLong()
+        val ldm  = LocalDateTime.now()
+        val d = Date(ldm.getYear(), ldm.getMonthValue()-1, ldm.getDayOfMonth())
+
         enCours.setOnClickListener ({
             val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatments(d)
             var desc:String = ""
