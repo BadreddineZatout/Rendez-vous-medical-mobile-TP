@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val doc1 = Doctor(1, "Badreddine", "Zatout", "Cardioloque")
+        /*val doc1 = Doctor(1, "Badreddine", "Zatout", "Cardioloque")
         val doc2 = Doctor(2, "Nassim", "Laghoub", "ORL")
         RoomService.appDatabase.getDoctorDao().addDoctor(doc1)
         RoomService.appDatabase.getDoctorDao().addDoctor(doc2)
@@ -35,11 +35,16 @@ class MainActivity : AppCompatActivity() {
         beginDate = Date(2021,9,21)
         endDate = Date(2021,11,21)
         val t3 = Treatment(3,"disease3", "description 3", beginDate, endDate, 1)
-        RoomService.appDatabase.getTreatmentDao().addTreatment(t3)
+        RoomService.appDatabase.getTreatmentDao().addTreatment(t3)*/
         val d = Date(2021,4,21)
-        val list = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor("Zatout", d)
+        val list:List<Treatment>? = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor("Zatout", d)
         //val t = Date(2021,4,15).time.toLong() > d.toLong()
-        affiche.text = list.toString()
+        affiche.text = "No description"
+        if (list != null) {
+            if (list.count() > 0){
+                affiche.text = list?.get(0)?.treatmentDescription
+            }
+        }
         //affiche2.text = Date(2021,4,15).time.toLong().toString()
     }
 }
